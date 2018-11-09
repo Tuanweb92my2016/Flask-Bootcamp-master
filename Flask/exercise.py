@@ -19,10 +19,10 @@ def check_username():
             upcase = True
         if username[i].islower():
             lowcase = True
-    if username[-1].isdigit():
-        num = True
+    # if username[-1].isdigit():
+    #     num = True
 
-    return render_template('check.html',username=username,upcase=upcase,lowcase=lowcase,num=num)
+    return render_template('check.html')
 
 
 @app.errorhandler(404)

@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+<!-- {% extends "base.html" %}
 
 {% block content %}
 
@@ -6,29 +6,34 @@
   <div class="jumbotron">
     <p>Let see how you performed! </p>
 
-    {% if upcase == True and lowcase == True and num == True %}
+    <!-- {% if upcase == True and lowcase == True %} -->
 
-      <p>Your username : {{username}} passed the 3 requirements!</p>
+      <!-- <p>Your username : {{username}} passed the 3 requirements! {{upcase}} {{lowcase}} {{num}} </p> -->
+
+    <!-- {%  elif upcase == False or lowcase == False or num == False %}
+
+      <p>Oh no! Looks like you had issues with your username!</p>
+      <p>Here are the requirements you failed :</p>
+
     {%  elif upcase == False %}
       <li>You did not use a uppercase characte.</li>
     {%  elif lowcase == False %}
       <li>You did not use a lowercase character.</li>
-    {%  elif num == False %}
-      <li>You did not end your username with a number.</li>
-
-    {% endif %}
-
-  </div>
-
-  <div class="jumbotron">
-    <p>Let see how you performed! </p>
-    <p>Oh no! Looks like you had issues with your username!</p>
-    <p>Here are the requirements you failed :</p>
-      <!-- <li>You did not use a uppercase characte.r</li>
-      <li>You did not use a lowercase character.</li>
+    {%  else num == False %}
       <li>You did not end your username with a number.</li> -->
+    <!-- {% endif %} -->
+
+  <!-- </div> -->
+
+<!-- {% endblock %} -->
+
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="jumbotron">
+
+    <h1>Welcome to the sign up page</h1>
+    <p>Fill out the form. Notice we don't save any info!</p>
 
   </div>
-
-
 {% endblock %}
