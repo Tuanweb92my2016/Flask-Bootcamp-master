@@ -49,6 +49,9 @@ class Owner(db.Model):
     def __init__(self,name,puppy_id):
         self.name = name
         self.puppy_id = puppy_id
+    def __repr__(self):
+        return "Owner Name: {}".format(self.name)
+
 
 # VIEW function
 
@@ -101,8 +104,8 @@ def add_owner():
 
     if form.validate_on_submit():
         name = form.name.data
-        id = form.id.data
-        owner = Owner(name,id)
+        pup_id = form.pup_id.data
+        owner = Owner(name,pup_id)
 
         db.session.add(owner)
         db.session.commit()
