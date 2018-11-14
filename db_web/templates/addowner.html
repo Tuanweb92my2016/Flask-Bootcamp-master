@@ -1,0 +1,23 @@
+{% extends "basic.html" %}
+
+{% block content %}
+  <div class="jumboytron">
+    <h1>Add an owner </h1>
+    <p>Add a new owner with the form below:</p>
+    <form method="POST">
+      {{form.hidden_tag()}}
+      {{form.name.label}} {{form.name()}}
+      <!-- {{form.submit()}} -->
+      <br>
+      <!-- {{form.hidden_tag()}}
+      {{form.name.label}} {{form.name()}}
+      {{form.submit()}} -->
+
+      <!-- {{form.hidden_tag()}} -->
+      {{form.id.label}} {{form.id()}}
+      <br>
+      {{form.submit()}}
+
+    </form>
+  </div>
+{% endblock %}

@@ -1,5 +1,5 @@
 import os
-from forms import AddForm,DelForm,AddOwnerForm
+from forms import AddForm,DelForm
 from flask import Flask,render_template,url_for,redirect
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -25,30 +25,12 @@ class Puppy(db.Model):
 
     id = db.Column(db.Integer,primary_key=True)
     name = db.Column(db.Text)
-    owner = db.relationship('Owner',backref='puppy',uselist=False)
 
     def __init__(self,name):
         self.name = name
 
-    # def __repr__(self):
-    #     return "Puppy name : {}".format(self.name)
     def __repr__(self):
-        if self.owner:
-            return "Puppy name is {} and owner is {}".format(self.name,self.owner.name)
-        else:
-            return "Puppy name is {} and has no owner yet!".format(self.name)
-
-class Owner(db.Model):
-
-    __tablename__ = 'owners'
-
-    id = db.Column(db.Integer,primary_key=True)
-    name = db.Column(db.Text)
-    puppy_id = db.Column(db.Integer,db.ForeignKey('puppies.id'))
-
-    def __init__(self,name,puppy_id):
-        self.name = name
-        self.puppy_id = puppy_id
+        return "Puppy name : {}".format(self.name)
 
 # VIEW function
 
@@ -93,23 +75,6 @@ def del_pup():
         return redirect(url_for('list_pup'))
 
     return render_template('delete.html',form=form)
-
-@app.route('/addowner',methods=['GET','POST'])
-def add_owner():
-
-    form = AddOwnerForm()
-
-    if form.validate_on_submit():
-        name = form.name.data
-        id = form.id.data
-        owner = Owner(name,id)
-
-        db.session.add(owner)
-        db.session.commit()
-
-        return redirect(url_for('list_pup'))
-
-    return render_template('addowner.html',form=form)
 
 if __name__ == '__main__':
     app.run(debug=True)
