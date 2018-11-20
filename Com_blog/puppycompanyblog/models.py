@@ -3,7 +3,7 @@
 from puppycompanyblog import db,login_manager
 from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import UserMixin
-from datetime import dateTime
+from datetime import datetime
 
 @login_manager.user_loader
 def user_loader(user_id):
@@ -53,4 +53,3 @@ class BlogPost(db.Model):
 
     def __repr__(self):
         return "Post ID : {} -- Date : {} ".format(self.id,self.title)
-        
